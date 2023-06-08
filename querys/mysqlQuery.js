@@ -19,11 +19,16 @@ async function viewAllRoles() {
             console.table(roles)
 }
 
+async function viewAllEmployees() {
+    const connection = await createConnection(buildConnectionOptions());
+
+    const [employees] = await connection.execute(`SELECT * FROM employees;`,[])
+            console.table(employees)
+}
 
 
 
 
 
 
-
-module.exports = {viewAllDepartments, viewAllRoles}
+module.exports = {viewAllDepartments, viewAllRoles, viewAllEmployees}

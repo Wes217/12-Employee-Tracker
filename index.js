@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const inquirer = require('inquirer');
 
-const {viewAllDepartments, viewAllRoles} = require('./querys/mysqlQuery.js');
+const {viewAllDepartments, viewAllRoles, viewAllEmployees} = require('./querys/mysqlQuery.js');
 
 
 
@@ -27,6 +27,9 @@ prompt([
         break;
         case 'View All Roles':
             viewAllRoles()
+        break;
+        case 'View All Employees':
+            viewAllEmployees()
         break;
         }
 })
