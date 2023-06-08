@@ -1,5 +1,4 @@
 const mysql = require('mysql2/promise');
-const { createConnection } = require('net');
 const {DB_USER, DB_PASSWORD, DB_PORT} = process.env;
 
 function buildConnectionOptions() {

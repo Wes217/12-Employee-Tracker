@@ -1,36 +1,36 @@
 require('dotenv').config();
-const {
-    buildConnectionOptions, 
-    createConnection
-} = require('./config/dbConfig.js');
 
 const inquirer = require('inquirer');
 
+const {viewAllDepartments, viewAllRoles} = require('./querys/mysqlQuery.js');
 
-async function main() {
-    const connection = await(createConnection(buildConnectionOptions()));
-    
-    const { createPromptModule } = inquirer;
-    const prompt = createPromptModule()
 
-    const selectedOption = await prompt([
+
+
+const { createPromptModule } = inquirer;
+const prompt = createPromptModule()
+
+prompt([
         {
         type: "list",
         name: "menuOption",
-        choices: ['Get All Departments', 'Create a Department'],
+        choices: 
+            ['View All Departments',
+            'View All Roles',
+            'View All Employees',],
         },
-]);
+])
+.then((option) => {
+    switch(option.menuOption){
+        case 'View All Departments':
+            viewAllDepartments()
+        break;
+        case 'View All Roles':
+            viewAllRoles()
+        break;
+        }
+})
 
-    console.log(selectedOption)
-
-    const [departments] = await connection.execute(`SELECT * FROM departments;`,[])
-    console.table(departments)
-}
 
 
 
-
-
-
-
-main()
