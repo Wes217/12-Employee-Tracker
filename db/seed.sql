@@ -1,6 +1,6 @@
 USE employee_db
 
-INSERT INTO departments (name)
+INSERT INTO departments (title)
 VALUES
     ('IT'),
     ('SALES'),
@@ -15,6 +15,6 @@ VALUES
 
 INSERT INTO employees(first_name, last_name, role_id, manager_id)
 VALUES 
-    ('John', 'Smith', 1, 2), 
-    ('Sally', 'Guy', 1, null), 
-    ('Tom', 'Man', 1, 2);
+    ('Sally', 'Guy', 2, NULL), 
+    ('John', 'Smith', 1, 1), 
+    ('Tom', 'Man', 3, 1);
