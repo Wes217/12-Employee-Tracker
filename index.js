@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const inquirer = require('inquirer');
 
-const {viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment} = require('./lib/mysqlQuery.js');
+const {viewAllDepartments, viewAllRoles, viewAllEmployees, addDepartment, addRole, addEmployee, updateEmployeeRole} = require('./lib/mysqlQuery.js');
 
 const { createPromptModule } = inquirer;
 const prompt = createPromptModule()
@@ -38,11 +38,22 @@ function init() {
                 case 'View All Roles':
                     viewAllRoles()
                 break;
+
+                case 'Add a Role':
+                    addRole()
+                break;
         
                 case 'View All Employees':
                     viewAllEmployees()
                 break;
-        
+                
+                case 'Add an Employee':
+                    addEmployee()
+                break;
+
+                case 'Update an Employee Role':
+                    updateEmployeeRole()
+                break;
         
             }
         
@@ -56,15 +67,8 @@ init()
 
 
 /*
-WHEN I choose to add a department
-THEN I am prompted to enter the name of the department and that department is added to the database
-
-WHEN I choose to add a role
-THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
-
-WHEN I choose to add an employee
-THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
 
 WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+
 */
